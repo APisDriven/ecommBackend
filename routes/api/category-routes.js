@@ -42,7 +42,7 @@ router.post('/', async (req, res) => {
 });
 
 //http://localhost:3001/api/categories/:id
-router.put('/:id', (req, res) => {
+router.put('/:id', async (req, res) => {
   // update a category by its `id` value
   const categoryData = await Category.update(req.body, {
     where: {
@@ -53,7 +53,7 @@ router.put('/:id', (req, res) => {
 });
 
 //http://localhost:3001/api/categories/:id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   // delete a category by its `id` value
   try {
     const categoryData = await Category.destroy({

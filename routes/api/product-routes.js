@@ -34,16 +34,6 @@ router.get('/:id', (req, res) => {
 
 // create new product
 router.post('/', (req, res) => {
-  Product.bulkCreate([
-    {
-      product_name: "Basketball",
-      price: 200.00,
-      stock: 3,
-      tagIds: [1, 2, 3, 4]
-    },
-  ]).then(() => {
-    res.send('Seeding Success!');
-  });
   /* req.body should look like this...
     {
       product_name: "Basketball",
@@ -116,7 +106,7 @@ router.put('/:id', (req, res) => {
     });
 });
 
-router.delete('/:id', (req, res) => {
+router.delete('/:id', async (req, res) => {
   // delete one product by its `id` value
   const product = await Product.destroy({
     where: {
